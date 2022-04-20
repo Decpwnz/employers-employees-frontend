@@ -1,12 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-// import { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
+import Cards from './components/Card';
+import Grids from './components/Grid';
 import Modals from './components/Modal';
 import Navbars from './components/Navbar';
 import Tables from './components/Table';
-import Grids from './components/Grid';
-import Cards from './components/Card';
+import './App.scss';
 
 function App() {
   return (
@@ -19,9 +18,7 @@ function App() {
         <Button>Yo</Button>
       </Grids>
       <Cards />
-
     </div>
-
   );
 }
 

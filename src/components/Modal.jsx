@@ -1,7 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css';
 import { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function Modals() {
   const [show, setShow] = useState(false);
@@ -10,7 +10,7 @@ function Modals() {
   const handleShow = () => setShow(true);
 
   return (
-    <div className="App">
+    <div>
       <Button variant="primary" onClick={handleShow}>
         Launch static backdrop modal
       </Button>
@@ -38,4 +38,5 @@ function Modals() {
     </div>
   );
 }
+
 export default Modals;

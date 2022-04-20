@@ -1,12 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css';
-import { Card, Button, Placeholder } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Placeholder from 'react-bootstrap/Placeholder';
 
 function Cards() {
   return (
-    <div className="App">
+    <div>
       <div className="d-flex justify-content-around">
-        <Card style={{ width: '18rem' }}>
+        <Card className="Card-width">
           <Card.Img variant="top" src="holder.js/100px180" />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
@@ -18,7 +18,7 @@ function Cards() {
           </Card.Body>
         </Card>
 
-        <Card style={{ width: '18rem' }}>
+        <Card className="Card-width">
           <Card.Img variant="top" src="holder.js/100px180" />
           <Card.Body>
             <Placeholder as={Card.Title} animation="glow">

@@ -1,12 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css';
-import {
-  Container, Row, Col, Button, Form,
-} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
 function Grids() {
   return (
-    <div className="App">
+    <div>
       <Container>
         <Row>
           <Col>

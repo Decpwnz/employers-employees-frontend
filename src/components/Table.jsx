@@ -1,20 +1,18 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css';
-import { Table } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
 
 function Tables() {
   return (
-    <div className="App">
+    <div>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
             <th>Employee/Employer</th>
-            <th>Зарплата</th>
-            <th>ФИО</th>
-            <th>Номер рабочего места</th>
-            <th>Обеденное время</th>
-            <th>Часы приема</th>
+            <th>Salary</th>
+            <th>Full Name</th>
+            <th>Workplace Number</th>
+            <th>Lunch Time</th>
+            <th>Business Hours</th>
           </tr>
         </thead>
         <tbody>

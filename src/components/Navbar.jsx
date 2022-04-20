@@ -1,13 +1,17 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css';
-import {
-  Button, Navbar, Container, Offcanvas, Nav, NavDropdown, Form, FormControl,
-} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
 import Modals from './Modal';
 
 function Navbars() {
   return (
-    <div className="App">
+    <div>
       <Navbar bg="light" expand={false}>
         <Container fluid>
           <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
@@ -47,7 +51,6 @@ function Navbars() {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-
     </div>
   );
 }
