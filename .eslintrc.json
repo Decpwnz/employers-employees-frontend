@@ -6,7 +6,6 @@
     "extends": [
         "airbnb",
         "airbnb/hooks"
-        // "plugin:react/jsx-runtime"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -24,7 +23,6 @@
     "rules": {
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        // "linebreak-style": "off",
         "import/order": [
             "error",
             {

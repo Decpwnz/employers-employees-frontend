@@ -12,7 +12,7 @@ function Modals() {
   return (
     <div>
       <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
+        Add
       </Button>
 
       <Modal

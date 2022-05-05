@@ -1,39 +1,33 @@
 import Table from 'react-bootstrap/Table';
 
-function Tables() {
+function Tables({ state }) {
   return (
     <div>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Employee/Employer</th>
+            <th>Employe/Employer</th>
+            <th>Name</th>
             <th>Salary</th>
-            <th>Full Name</th>
             <th>Workplace Number</th>
             <th>Lunch Time</th>
             <th>Business Hours</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
+        {
+          state.map((item) => (
+            <tbody key={item.id}>
+              <tr>
+                <th>{item.type}</th>
+                <th>{item.name}</th>
+                <th>{item.salary}</th>
+                <th>{item.workplaceNumber}</th>
+                <th>{item.lunchTime}</th>
+                <th>{item.businessHours}</th>
+              </tr>
+            </tbody>
+          ))
+        }
       </Table>
     </div>
   );
