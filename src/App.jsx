@@ -1,14 +1,10 @@
-import Containers from './components/Container';
-import Modals from './components/Modal';
+import Container from './components/Container';
 import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <div className="modals">
-        <Modals />
-      </div>
-      <Containers />
+    <div>
+      <Container />
     </div>
   );
 }
