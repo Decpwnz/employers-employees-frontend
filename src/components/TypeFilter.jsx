@@ -1,12 +1,37 @@
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-function TypeFilter({ onClick }) {
+const ButtonValues = {
+  All: 'All',
+  Employee: 'Employee',
+  Employer: 'Employer',
+};
+
+function TypeFilter({ onClick, active }) {
   return (
-    <div>
-      <Button variant="outline-primary" type="button" value="All" onClick={onClick}>All</Button>
-      <Button variant="outline-primary" type="button" value="Employee" onClick={onClick}>Employee</Button>
-      <Button variant="outline-primary" type="button" value="Employer" onClick={onClick}>Employer</Button>
-    </div>
+    <ButtonGroup>
+      <Button
+        variant={active === 'All' ? 'primary' : 'outline-primary'}
+        value={ButtonValues.All}
+        onClick={onClick}
+      >
+        All
+      </Button>
+      <Button
+        variant={active === 'Employee' ? 'primary' : 'outline-primary'}
+        value={ButtonValues.Employee}
+        onClick={onClick}
+      >
+        Employee
+      </Button>
+      <Button
+        variant={active === 'Employer' ? 'primary' : 'outline-primary'}
+        value={ButtonValues.Employer}
+        onClick={onClick}
+      >
+        Employer
+      </Button>
+    </ButtonGroup>
   );
 }
 

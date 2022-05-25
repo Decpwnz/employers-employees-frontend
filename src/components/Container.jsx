@@ -8,25 +8,30 @@ import data from './data';
 import Table from './Table';
 import TypeFilter from './TypeFilter';
 
-const typeData = {
-  employee: 'Employee',
-  employer: 'Employer',
+const PersonData = {
+  All: 'All',
+  Employee: 'Employee',
+  Employer: 'Employer',
 };
 
 function Container() {
   const [team, setTeam] = useState(data);
+  const [active, setActive] = useState();
 
   const handleClick = (event) => {
     const typeFilter = event.target.value;
 
-    if (typeFilter === 'All') {
+    if (typeFilter === PersonData.All) {
       setTeam(data);
-    } else if (typeFilter === typeData.employee) {
-      const filtered = data.filter((item) => item.type === typeData.employee);
+      setActive('All');
+    } else if (typeFilter === PersonData.Employee) {
+      const filtered = data.filter((item) => item.type === PersonData.Employee);
       setTeam(filtered);
-    } else if (typeFilter === typeData.employer) {
-      const filtered = data.filter((item) => item.type === typeData.employer);
+      setActive('Employee');
+    } else if (typeFilter === PersonData.Employer) {
+      const filtered = data.filter((item) => item.type === PersonData.Employer);
       setTeam(filtered);
+      setActive('Employer');
     }
   };
 
@@ -40,7 +45,7 @@ function Container() {
         <Col>
           2 of 2
           <br />
-          <TypeFilter onClick={handleClick} />
+          <TypeFilter onClick={handleClick} active={active} />
         </Col>
       </Row>
     </RBContainer>
