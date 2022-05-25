@@ -23,15 +23,15 @@ function Container() {
 
     if (typeFilter === PersonData.All) {
       setTeam(data);
-      setActive('All');
+      setActive(PersonData.All);
     } else if (typeFilter === PersonData.Employee) {
       const filtered = data.filter((item) => item.type === PersonData.Employee);
       setTeam(filtered);
-      setActive('Employee');
+      setActive(PersonData.Employee);
     } else if (typeFilter === PersonData.Employer) {
       const filtered = data.filter((item) => item.type === PersonData.Employer);
       setTeam(filtered);
-      setActive('Employer');
+      setActive(PersonData.Employer);
     }
   };
 

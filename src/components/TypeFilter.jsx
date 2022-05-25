@@ -11,21 +11,21 @@ function TypeFilter({ onClick, active }) {
   return (
     <ButtonGroup>
       <Button
-        variant={active === 'All' ? 'primary' : 'outline-primary'}
+        variant={active === ButtonValues.All ? 'primary' : 'outline-primary'}
         value={ButtonValues.All}
         onClick={onClick}
       >
         All
       </Button>
       <Button
-        variant={active === 'Employee' ? 'primary' : 'outline-primary'}
+        variant={active === ButtonValues.Employee ? 'primary' : 'outline-primary'}
         value={ButtonValues.Employee}
         onClick={onClick}
       >
         Employee
       </Button>
       <Button
-        variant={active === 'Employer' ? 'primary' : 'outline-primary'}
+        variant={active === ButtonValues.Employer ? 'primary' : 'outline-primary'}
         value={ButtonValues.Employer}
         onClick={onClick}
       >
