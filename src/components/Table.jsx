@@ -1,4 +1,5 @@
-import { Table as RBTable } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import RBTable from 'react-bootstrap/Table';
 
 function Table({ team }) {
   return (
@@ -30,5 +31,17 @@ function Table({ team }) {
     </RBTable>
   );
 }
+
+Table.propTypes = {
+  team: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    salary: PropTypes.number.isRequired,
+    workplaceNumber: PropTypes.number.isRequired,
+    lunchTime: PropTypes.string.isRequired,
+    businessHours: PropTypes.string.isRequired,
+  })).isRequired,
+};
 
 export default Table;

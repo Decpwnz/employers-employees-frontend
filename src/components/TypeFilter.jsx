@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
@@ -34,5 +35,10 @@ function TypeFilter({ onClick, active }) {
     </ButtonGroup>
   );
 }
+
+TypeFilter.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  active: PropTypes.string.isRequired,
+};
 
 export default TypeFilter;

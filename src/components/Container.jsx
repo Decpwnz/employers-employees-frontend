@@ -16,7 +16,7 @@ const PersonData = {
 
 function Container() {
   const [team, setTeam] = useState(data);
-  const [active, setActive] = useState();
+  const [active, setActive] = useState(PersonData.All);
 
   const handleClick = (event) => {
     const typeFilter = event.target.value;

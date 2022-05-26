@@ -47,7 +47,6 @@
                     "caseInsensitive": true
                 }
             }
-        ],
-        "react/prop-types": 0
+        ]
     }
 }
