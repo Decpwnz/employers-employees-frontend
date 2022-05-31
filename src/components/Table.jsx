@@ -32,9 +32,9 @@ function Table({ team, searchTerm, setSearchTerm }) {
                 <th>{item.type}</th>
                 <th>{item.name}</th>
                 <th>{item.salary}</th>
-                <th>{item.workplace_number}</th>
-                <th>{item.lunch_time}</th>
-                <th>{item.business_hours}</th>
+                <th>{item.workplaceNumber}</th>
+                <th>{item.lunchTime}</th>
+                <th>{item.businessHours}</th>
               </tr>
             </tbody>
           ))
