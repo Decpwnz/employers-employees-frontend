@@ -25,6 +25,43 @@ const data = [
     workplaceNumber: 3,
     lunchTime: '14:00 - 15:00',
     businessHours: '08:00 - 17:00',
-  }];
+  },
+  {
+    id: 4,
+    type: 'Employee',
+    name: 'Zygmunt',
+    salary: 500,
+    workplaceNumber: 3,
+    lunchTime: '14:00 - 15:00',
+    businessHours: '08:00 - 17:00',
+  },
+  {
+    id: 5,
+    type: 'Employer',
+    name: 'Karen',
+    salary: 500,
+    workplaceNumber: 3,
+    lunchTime: '14:00 - 15:00',
+    businessHours: '08:00 - 17:00',
+  },
+  {
+    id: 6,
+    type: 'Employee',
+    name: 'Frank',
+    salary: 500,
+    workplaceNumber: 3,
+    lunchTime: '14:00 - 15:00',
+    businessHours: '08:00 - 17:00',
+  },
+  {
+    id: 7,
+    type: 'Employer',
+    name: 'Beatrice',
+    salary: 500,
+    workplaceNumber: 3,
+    lunchTime: '14:00 - 15:00',
+    businessHours: '08:00 - 17:00',
+  },
+];
 
 export default data;

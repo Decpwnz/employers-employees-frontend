@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Container as RBContainer } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
+import RBContainer from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import data from './data';
@@ -17,6 +17,7 @@ const PersonData = {
 function Container() {
   const [team, setTeam] = useState(data);
   const [active, setActive] = useState(PersonData.All);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleClick = (event) => {
     const typeFilter = event.target.value;
@@ -40,7 +41,12 @@ function Container() {
       <Row>
         <Col xs={10}>
           1 of 1
-          <Table team={team} />
+          <Table
+            team={team}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            data={data}
+          />
         </Col>
         <Col>
           2 of 2

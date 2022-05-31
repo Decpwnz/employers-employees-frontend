@@ -1,34 +1,46 @@
 import PropTypes from 'prop-types';
 import RBTable from 'react-bootstrap/Table';
 
-function Table({ team }) {
+import SearchBar from './SearchBar';
+
+function Table({ team, searchTerm, setSearchTerm }) {
   return (
-    <RBTable striped bordered hover>
-      <thead>
-        <tr>
-          <th>Employe/Employer</th>
-          <th>Name</th>
-          <th>Salary</th>
-          <th>Workplace Number</th>
-          <th>Lunch Time</th>
-          <th>Business Hours</th>
-        </tr>
-      </thead>
-      {
-        team.map((item) => (
-          <tbody key={item.id}>
-            <tr>
-              <th>{item.type}</th>
-              <th>{item.name}</th>
-              <th>{item.salary}</th>
-              <th>{item.workplaceNumber}</th>
-              <th>{item.lunchTime}</th>
-              <th>{item.businessHours}</th>
-            </tr>
-          </tbody>
-        ))
-      }
-    </RBTable>
+    <div>
+      <SearchBar setSearchTerm={setSearchTerm} />
+      <RBTable striped bordered hover>
+        <thead>
+          <tr>
+            <th>Employe/Employer</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Workplace Number</th>
+            <th>Lunch Time</th>
+            <th>Business Hours</th>
+          </tr>
+        </thead>
+        {
+          team.filter((item) => {
+            if (team === '') {
+              return item;
+            } if (item.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return item;
+            }
+            return false;
+          }).map((item) => (
+            <tbody key={item.id}>
+              <tr>
+                <th>{item.type}</th>
+                <th>{item.name}</th>
+                <th>{item.salary}</th>
+                <th>{item.workplace_number}</th>
+                <th>{item.lunch_time}</th>
+                <th>{item.business_hours}</th>
+              </tr>
+            </tbody>
+          ))
+        }
+      </RBTable>
+    </div>
   );
 }
 
@@ -42,6 +54,8 @@ Table.propTypes = {
     lunchTime: PropTypes.string.isRequired,
     businessHours: PropTypes.string.isRequired,
   })).isRequired,
+  searchTerm: PropTypes.string.isRequired,
+  setSearchTerm: PropTypes.func.isRequired,
 };
 
 export default Table;
