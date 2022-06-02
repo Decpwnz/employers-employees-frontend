@@ -3,10 +3,10 @@ import RBTable from 'react-bootstrap/Table';
 
 import SearchBar from './SearchBar';
 
-function Table({ team, searchTerm, setSearchTerm }) {
+function Table({ team, searchTerm, onSearchChange }) {
   return (
     <div>
-      <SearchBar setSearchTerm={setSearchTerm} />
+      <SearchBar onSearchChange={onSearchChange} />
       <RBTable striped bordered hover>
         <thead>
           <tr>
@@ -20,10 +20,10 @@ function Table({ team, searchTerm, setSearchTerm }) {
         </thead>
         {
           team.filter((item) => {
-            if (team === '') {
-              return item;
+            if (item === true) {
+              return true;
             } if (item.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-              return item;
+              return true;
             }
             return false;
           }).map((item) => (
@@ -55,7 +55,7 @@ Table.propTypes = {
     businessHours: PropTypes.string.isRequired,
   })).isRequired,
   searchTerm: PropTypes.string.isRequired,
-  setSearchTerm: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
 };
 
 export default Table;

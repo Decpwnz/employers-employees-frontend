@@ -1,23 +1,23 @@
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 
-function SearchBar({ setSearchTerm }) {
+function SearchBar({ onSearchChange }) {
+  const handleChange = (event) => {
+    onSearchChange(event.target.value);
+  };
+
   return (
-    <div>
-      <Form>
-        <Form.Control
-          type="text"
-          placeholder="Search..."
-          onChange={(event) => {
-            setSearchTerm(event.target.value);
-          }}
-        />
-      </Form>
-    </div>
+    <Form>
+      <Form.Control
+        type="text"
+        placeholder="Search..."
+        onChange={handleChange}
+      />
+    </Form>
   );
 }
 
 SearchBar.propTypes = {
-  setSearchTerm: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
 };
 export default SearchBar;

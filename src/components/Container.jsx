@@ -44,8 +44,7 @@ function Container() {
           <Table
             team={team}
             searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            data={data}
+            onSearchChange={setSearchTerm}
           />
         </Col>
         <Col>
