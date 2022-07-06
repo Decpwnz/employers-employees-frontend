@@ -4,7 +4,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 function SalaryRange({
-  handleMinValue, handleMaxValue,
+  onMinValueChange, onMaxValueChange,
 }) {
   return (
     <div>
@@ -17,13 +17,13 @@ function SalaryRange({
               aria-label="First name"
               placeholder="From"
               type="number"
-              onChange={handleMinValue}
+              onChange={onMinValueChange}
             />
             <FormControl
               aria-label="Last name"
               placeholder="To"
               type="number"
-              onChange={handleMaxValue}
+              onChange={onMaxValueChange}
             />
           </InputGroup>
         </label>
@@ -32,8 +32,8 @@ function SalaryRange({
   );
 }
 SalaryRange.propTypes = {
-  handleMinValue: PropTypes.func.isRequired,
-  handleMaxValue: PropTypes.func.isRequired,
+  onMinValueChange: PropTypes.func.isRequired,
+  onMaxValueChange: PropTypes.func.isRequired,
 };
 
 export default SalaryRange;
