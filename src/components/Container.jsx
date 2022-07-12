@@ -22,7 +22,7 @@ function Container() {
   const [minValue, setMinValue] = useState(null);
   const [maxValue, setMaxValue] = useState(null);
 
-  const handleClick = (event) => {
+  const handleTypeClick = (event) => {
     setType(event.target.value);
   };
 
@@ -56,8 +56,8 @@ function Container() {
         <Col>
           2 of 2
           <br />
-          <SearchBar handleSearchChange={handleSearchChange} />
-          <TypeFilter onClick={handleClick} type={type} />
+          <SearchBar onSearchChange={handleSearchChange} />
+          <TypeFilter onClick={handleTypeClick} type={type} />
           <SalaryRange
             onMinValueChange={handleMinValue}
             onMaxValueChange={handleMaxValue}
