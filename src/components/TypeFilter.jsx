@@ -8,37 +8,40 @@ const ButtonValues = {
   Employer: 'Employer',
 };
 
-function TypeFilter({ onClick, active }) {
+function TypeFilter({ onClick, type }) {
   return (
-    <ButtonGroup>
-      <Button
-        variant={active === ButtonValues.All ? 'primary' : 'outline-primary'}
-        value={ButtonValues.All}
-        onClick={onClick}
-      >
-        All
-      </Button>
-      <Button
-        variant={active === ButtonValues.Employee ? 'primary' : 'outline-primary'}
-        value={ButtonValues.Employee}
-        onClick={onClick}
-      >
-        Employee
-      </Button>
-      <Button
-        variant={active === ButtonValues.Employer ? 'primary' : 'outline-primary'}
-        value={ButtonValues.Employer}
-        onClick={onClick}
-      >
-        Employer
-      </Button>
-    </ButtonGroup>
+    <div>
+      Type Filter
+      <ButtonGroup>
+        <Button
+          variant={type === ButtonValues.All ? 'primary' : 'outline-primary'}
+          value={ButtonValues.All}
+          onClick={onClick}
+        >
+          All
+        </Button>
+        <Button
+          variant={type === ButtonValues.Employee ? 'primary' : 'outline-primary'}
+          value={ButtonValues.Employee}
+          onClick={onClick}
+        >
+          Employee
+        </Button>
+        <Button
+          variant={type === ButtonValues.Employer ? 'primary' : 'outline-primary'}
+          value={ButtonValues.Employer}
+          onClick={onClick}
+        >
+          Employer
+        </Button>
+      </ButtonGroup>
+    </div>
   );
 }
 
 TypeFilter.propTypes = {
   onClick: PropTypes.func.isRequired,
-  active: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default TypeFilter;

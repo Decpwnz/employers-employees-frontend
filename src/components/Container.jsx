@@ -5,6 +5,8 @@ import RBContainer from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import data from './data';
+import SalaryRange from './SalaryRange';
+import SearchBar from './SearchBar';
 import Table from './Table';
 import TypeFilter from './TypeFilter';
 
@@ -15,25 +17,27 @@ const PersonData = {
 };
 
 function Container() {
-  const [team, setTeam] = useState(data);
-  const [active, setActive] = useState(PersonData.All);
+  const [type, setType] = useState(PersonData.All);
   const [searchTerm, setSearchTerm] = useState('');
+  const [minValue, setMinValue] = useState(null);
+  const [maxValue, setMaxValue] = useState(null);
 
-  const handleClick = (event) => {
-    const typeFilter = event.target.value;
+  const handleTypeClick = (event) => {
+    setType(event.target.value);
+  };
 
-    if (typeFilter === PersonData.All) {
-      setTeam(data);
-      setActive(PersonData.All);
-    } else if (typeFilter === PersonData.Employee) {
-      const filtered = data.filter((item) => item.type === PersonData.Employee);
-      setTeam(filtered);
-      setActive(PersonData.Employee);
-    } else if (typeFilter === PersonData.Employer) {
-      const filtered = data.filter((item) => item.type === PersonData.Employer);
-      setTeam(filtered);
-      setActive(PersonData.Employer);
-    }
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleMinValue = (event) => {
+    if (event.target.value === '') setMinValue(null);
+    else setMinValue(Number(event.target.value));
+  };
+
+  const handleMaxValue = (event) => {
+    if (event.target.value === '') setMaxValue(null);
+    else setMaxValue(Number(event.target.value));
   };
 
   return (
@@ -42,15 +46,22 @@ function Container() {
         <Col xs={10}>
           1 of 1
           <Table
-            team={team}
+            type={type}
             searchTerm={searchTerm}
-            onSearchChange={setSearchTerm}
+            minValue={minValue}
+            maxValue={maxValue}
+            data={data}
           />
         </Col>
         <Col>
           2 of 2
           <br />
-          <TypeFilter onClick={handleClick} active={active} />
+          <SearchBar onSearchChange={handleSearchChange} />
+          <TypeFilter onClick={handleTypeClick} type={type} />
+          <SalaryRange
+            onMinValueChange={handleMinValue}
+            onMaxValueChange={handleMaxValue}
+          />
         </Col>
       </Row>
     </RBContainer>
