@@ -22,22 +22,22 @@ function Table({
       </thead>
       {
         data.filter((item) => {
-          function handleTypeFilter(value, items) {
+          function handleTypeFilter(value, member) {
             if (value === 'All') return true;
-            return value === items.type;
+            return value === member.type;
           }
 
-          function handleSearchBar(search, items) {
-            if (items.name.toLowerCase().includes(search.toLowerCase())) {
+          function handleSearchBar(search, member) {
+            if (member.name.toLowerCase().includes(search.toLowerCase())) {
               return true;
             }
             return false;
           }
 
-          function handleSalaryRange(min, max, items) {
-            if (min === null && items.salary <= max) return true;
-            if (max === null && items.salary >= min) return true;
-            if (items.salary >= min && items.salary <= max) return true;
+          function handleSalaryRange(min, max, member) {
+            if (min === null && member.salary <= max) return true;
+            if (max === null && member.salary >= min) return true;
+            if (member.salary >= min && member.salary <= max) return true;
             return false;
           }
 
