@@ -1,14 +1,24 @@
 import { useState } from 'react';
 
-import Col from 'react-bootstrap/Col';
-import RBContainer from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import { makeStyles } from '@material-ui/core';
+import { Box } from '@mui/material';
 
-import data from './data';
-import SalaryRange from './SalaryRange';
+import data from '../data/data';
+import EmployeeList from './EmployeeList';
+import SalaryRangeFilter from './SalaryRangeFilter';
 import SearchBar from './SearchBar';
-import Table from './Table';
 import TypeFilter from './TypeFilter';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    padding: theme.spacing(6),
+  },
+  filterContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    paddingBottom: theme.spacing(6),
+  },
+}));
 
 const PersonData = {
   All: 'All',
@@ -17,6 +27,8 @@ const PersonData = {
 };
 
 function Container() {
+  const classes = useStyles();
+
   const [type, setType] = useState(PersonData.All);
   const [searchTerm, setSearchTerm] = useState('');
   const [minValue, setMinValue] = useState(null);
@@ -41,30 +53,25 @@ function Container() {
   };
 
   return (
-    <RBContainer fluid>
-      <Row>
-        <Col xs={10}>
-          1 of 1
-          <Table
-            type={type}
-            searchTerm={searchTerm}
-            minValue={minValue}
-            maxValue={maxValue}
-            data={data}
-          />
-        </Col>
-        <Col>
-          2 of 2
-          <br />
-          <SearchBar onSearchChange={handleSearchChange} />
-          <TypeFilter onClick={handleTypeClick} type={type} />
-          <SalaryRange
-            onMinValueChange={handleMinValue}
-            onMaxValueChange={handleMaxValue}
-          />
-        </Col>
-      </Row>
-    </RBContainer>
+    <Box sx={{ flexGrow: 1 }} className={classes.container}>
+      <Box className={classes.filterContainer}>
+        <SearchBar onSearchChange={handleSearchChange} />
+        <TypeFilter onClick={handleTypeClick} type={type} />
+        <SalaryRangeFilter
+          onMinValueChange={handleMinValue}
+          onMaxValueChange={handleMaxValue}
+          minValue={minValue}
+          maxValue={maxValue}
+        />
+      </Box>
+      <EmployeeList
+        type={type}
+        searchTerm={searchTerm}
+        minValue={minValue}
+        maxValue={maxValue}
+        data={data}
+      />
+    </Box>
   );
 }
 
