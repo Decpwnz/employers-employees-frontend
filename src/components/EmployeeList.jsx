@@ -1,44 +1,31 @@
-import { makeStyles } from '@material-ui/core';
-import {
-  Box, Card, CardContent, Typography,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-
-const useStyles = makeStyles((theme) => ({
-  gridContainer: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
-    gridGap: theme.spacing(1.25),
-  },
-  cardItem: {
-    padding: theme.spacing(2),
-    marginTop: theme.spacing(2),
-  },
-}));
 
 function EmployeeList({
   data, type, searchTerm, minValue, maxValue,
 }) {
-  const classes = useStyles();
   const sortedData = data.sort((a, b) => (a.name > b.name ? 1 : -1));
 
   const filteredData = sortedData.filter((item) => {
-    function handleTypeFilter(value, member) {
+    function handleTypeFilter(value, employee) {
       if (value === 'All') return true;
-      return value === member.type;
+      return value === employee.type;
     }
 
-    function handleSearchBar(search, member) {
-      if (member.name.toLowerCase().includes(search.toLowerCase())) {
+    function handleSearchBar(search, employee) {
+      if (employee.name.toLowerCase().includes(search.toLowerCase())) {
         return true;
       }
       return false;
     }
 
-    function handleSalaryRange(min, max, member) {
-      if (min === null && member.salary <= max) return true;
-      if (max === null && member.salary >= min) return true;
-      if (member.salary >= min && member.salary <= max) return true;
+    function handleSalaryRange(min, max, employee) {
+      if (min === null && employee.salary <= max) return true;
+      if (max === null && employee.salary >= min) return true;
+      if (employee.salary >= min && employee.salary <= max) return true;
       return false;
     }
 
@@ -50,9 +37,12 @@ function EmployeeList({
   });
 
   return (
-    <Box className={classes.gridContainer}>
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gridGap: '10px' }}>
       {filteredData.map((employee) => (
-        <Card className={classes.cardItem} key={employee.id}>
+        <Card
+          sx={{ padding: '16px', marginTop: '16px' }}
+          key={employee.id}
+        >
           {employee.type === 'Employer' ? (
             <CardContent>
               <Typography>

@@ -1,24 +1,12 @@
 import { useState } from 'react';
 
-import { makeStyles } from '@material-ui/core';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 
 import data from '../data/data';
 import EmployeeList from './EmployeeList';
 import SalaryRangeFilter from './SalaryRangeFilter';
 import SearchBar from './SearchBar';
 import TypeFilter from './TypeFilter';
-
-const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: theme.spacing(6),
-  },
-  filterContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    paddingBottom: theme.spacing(6),
-  },
-}));
 
 const PersonData = {
   All: 'All',
@@ -27,8 +15,6 @@ const PersonData = {
 };
 
 function Container() {
-  const classes = useStyles();
-
   const [type, setType] = useState(PersonData.All);
   const [searchTerm, setSearchTerm] = useState('');
   const [minValue, setMinValue] = useState(null);
@@ -53,8 +39,8 @@ function Container() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }} className={classes.container}>
-      <Box className={classes.filterContainer}>
+    <Box sx={{ p: '48px' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', paddingBottom: '48px' }}>
         <SearchBar onSearchChange={handleSearchChange} />
         <TypeFilter onClick={handleTypeClick} type={type} />
         <SalaryRangeFilter
