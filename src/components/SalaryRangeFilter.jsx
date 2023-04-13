@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import PropTypes from 'prop-types';
 
@@ -6,7 +6,7 @@ function SalaryRangeFilter({
   onMinValueChange, onMaxValueChange, minValue, maxValue,
 }) {
   return (
-    <Box p={2} sx={{ display: 'grid', gridGap: '8px' }}>
+    <Stack spacing={1}>
       <TextField
         label="Salary starting from"
         type="number"
@@ -21,7 +21,7 @@ function SalaryRangeFilter({
         onChange={onMaxValueChange}
         InputProps={{ inputProps: { min: 0 } }}
       />
-    </Box>
+    </Stack>
   );
 }
 

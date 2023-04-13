@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 import data from '../data/data';
 import EmployeeList from './EmployeeList';
@@ -20,7 +20,7 @@ function Container() {
   const [minValue, setMinValue] = useState(null);
   const [maxValue, setMaxValue] = useState(null);
 
-  const handleTypeClick = (event) => {
+  const handleEmployeeType = (event) => {
     setType(event.target.value);
   };
 
@@ -39,17 +39,15 @@ function Container() {
   };
 
   return (
-    <Box sx={{ p: '48px' }}>
-      <Box sx={{ display: 'flex', justifyContent: 'center', paddingBottom: '48px' }}>
-        <SearchBar onSearchChange={handleSearchChange} />
-        <TypeFilter onClick={handleTypeClick} type={type} />
-        <SalaryRangeFilter
-          onMinValueChange={handleMinValue}
-          onMaxValueChange={handleMaxValue}
-          minValue={minValue}
-          maxValue={maxValue}
-        />
-      </Box>
+    <Grid container justifyContent="center" p={5}>
+      <SearchBar onSearchChange={handleSearchChange} />
+      <TypeFilter handleEmployeeType={handleEmployeeType} type={type} />
+      <SalaryRangeFilter
+        onMinValueChange={handleMinValue}
+        onMaxValueChange={handleMaxValue}
+        minValue={minValue}
+        maxValue={maxValue}
+      />
       <EmployeeList
         type={type}
         searchTerm={searchTerm}
@@ -57,7 +55,7 @@ function Container() {
         maxValue={maxValue}
         data={data}
       />
-    </Box>
+    </Grid>
   );
 }
 

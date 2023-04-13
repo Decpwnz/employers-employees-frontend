@@ -1,13 +1,13 @@
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
 function EmployeeList({
   data, type, searchTerm, minValue, maxValue,
 }) {
-  const sortedData = data.sort((a, b) => (a.name > b.name ? 1 : -1));
+  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
 
   const filteredData = sortedData.filter((item) => {
     function handleTypeFilter(value, employee) {
@@ -37,49 +37,51 @@ function EmployeeList({
   });
 
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gridGap: '10px' }}>
+    <Grid container spacing={2} marginTop={4}>
       {filteredData.map((employee) => (
-        <Card
-          sx={{ padding: '16px', marginTop: '16px' }}
-          key={employee.id}
-        >
-          {employee.type === 'Employer' ? (
-            <CardContent>
-              <Typography>
-                {`Type: ${employee.type}`}
-              </Typography>
-              <Typography>
-                {`Name: ${employee.name}`}
-              </Typography>
-              <Typography>
-                {`Salary: ${employee.salary}`}
-              </Typography>
-              <Typography>
-                {`Business Hours: ${employee.businessHours}`}
-              </Typography>
-            </CardContent>
-          ) : (
-            <CardContent>
-              <Typography>
-                {`Type: ${employee.type}`}
-              </Typography>
-              <Typography>
-                {`Name: ${employee.name}`}
-              </Typography>
-              <Typography>
-                {`Salary: ${employee.salary}`}
-              </Typography>
-              <Typography>
-                {`Workplace Number: ${employee.workplaceNumber}`}
-              </Typography>
-              <Typography>
-                {`Lunch Time: ${employee.lunchTime}`}
-              </Typography>
-            </CardContent>
-          )}
-        </Card>
+        <Grid item xs={12} sm={6} md={4} lg={2} key={employee.id}>
+          <Card
+            sx={{ height: '100%' }}
+            key={employee.id}
+          >
+            {employee.type === 'Employer' ? (
+              <CardContent>
+                <Typography>
+                  {`Type: ${employee.type}`}
+                </Typography>
+                <Typography>
+                  {`Name: ${employee.name}`}
+                </Typography>
+                <Typography>
+                  {`Salary: ${employee.salary}`}
+                </Typography>
+                <Typography>
+                  {`Business Hours: ${employee.businessHours}`}
+                </Typography>
+              </CardContent>
+            ) : (
+              <CardContent>
+                <Typography>
+                  {`Type: ${employee.type}`}
+                </Typography>
+                <Typography>
+                  {`Name: ${employee.name}`}
+                </Typography>
+                <Typography>
+                  {`Salary: ${employee.salary}`}
+                </Typography>
+                <Typography>
+                  {`Workplace Number: ${employee.workplaceNumber}`}
+                </Typography>
+                <Typography>
+                  {`Lunch Time: ${employee.lunchTime}`}
+                </Typography>
+              </CardContent>
+            )}
+          </Card>
+        </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 }
 

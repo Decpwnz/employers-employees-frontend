@@ -11,7 +11,7 @@ const ButtonValues = {
   Employer: 'Employer',
 };
 
-function TypeFilter({ onClick, type }) {
+function TypeFilter({ handleEmployeeType, type }) {
   return (
     <FormControl sx={{ padding: '16px' }}>
       <FormLabel id="demo-controlled-radio-buttons-group">
@@ -23,16 +23,16 @@ function TypeFilter({ onClick, type }) {
         name="controlled-radio-buttons-group"
         value={type}
       >
-        <FormControlLabel onClick={onClick} value={ButtonValues.All} control={<Radio />} label="All" />
-        <FormControlLabel onClick={onClick} value={ButtonValues.Employee} control={<Radio />} label="Employee" />
-        <FormControlLabel onClick={onClick} value={ButtonValues.Employer} control={<Radio />} label="Employer" />
+        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.All} control={<Radio />} label="All" />
+        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.Employee} control={<Radio />} label="Employee" />
+        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.Employer} control={<Radio />} label="Employer" />
       </RadioGroup>
     </FormControl>
   );
 }
 
 TypeFilter.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  handleEmployeeType: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
 };
 
