@@ -1,6 +1,9 @@
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 const ButtonValues = {
   All: 'All',
@@ -8,39 +11,28 @@ const ButtonValues = {
   Employer: 'Employer',
 };
 
-function TypeFilter({ onClick, type }) {
+function TypeFilter({ handleEmployeeType, type }) {
   return (
-    <div>
-      Type Filter
-      <ButtonGroup>
-        <Button
-          variant={type === ButtonValues.All ? 'primary' : 'outline-primary'}
-          value={ButtonValues.All}
-          onClick={onClick}
-        >
-          All
-        </Button>
-        <Button
-          variant={type === ButtonValues.Employee ? 'primary' : 'outline-primary'}
-          value={ButtonValues.Employee}
-          onClick={onClick}
-        >
-          Employee
-        </Button>
-        <Button
-          variant={type === ButtonValues.Employer ? 'primary' : 'outline-primary'}
-          value={ButtonValues.Employer}
-          onClick={onClick}
-        >
-          Employer
-        </Button>
-      </ButtonGroup>
-    </div>
+    <FormControl sx={{ padding: '16px' }}>
+      <FormLabel id="demo-controlled-radio-buttons-group">
+        Type
+      </FormLabel>
+      <RadioGroup
+        row
+        aria-labelledby="demo-controlled-radio-buttons-group"
+        name="controlled-radio-buttons-group"
+        value={type}
+      >
+        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.All} control={<Radio />} label="All" />
+        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.Employee} control={<Radio />} label="Employee" />
+        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.Employer} control={<Radio />} label="Employer" />
+      </RadioGroup>
+    </FormControl>
   );
 }
 
 TypeFilter.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  handleEmployeeType: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
 };
 

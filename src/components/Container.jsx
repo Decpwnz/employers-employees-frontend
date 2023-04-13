@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-import Col from 'react-bootstrap/Col';
-import RBContainer from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Grid from '@mui/material/Grid';
 
-import data from './data';
-import SalaryRange from './SalaryRange';
+import data from '../data/data';
+import EmployeeList from './EmployeeList';
+import SalaryRangeFilter from './SalaryRangeFilter';
 import SearchBar from './SearchBar';
-import Table from './Table';
 import TypeFilter from './TypeFilter';
 
 const PersonData = {
@@ -22,7 +20,7 @@ function Container() {
   const [minValue, setMinValue] = useState(null);
   const [maxValue, setMaxValue] = useState(null);
 
-  const handleTypeClick = (event) => {
+  const handleEmployeeType = (event) => {
     setType(event.target.value);
   };
 
@@ -41,30 +39,23 @@ function Container() {
   };
 
   return (
-    <RBContainer fluid>
-      <Row>
-        <Col xs={10}>
-          1 of 1
-          <Table
-            type={type}
-            searchTerm={searchTerm}
-            minValue={minValue}
-            maxValue={maxValue}
-            data={data}
-          />
-        </Col>
-        <Col>
-          2 of 2
-          <br />
-          <SearchBar onSearchChange={handleSearchChange} />
-          <TypeFilter onClick={handleTypeClick} type={type} />
-          <SalaryRange
-            onMinValueChange={handleMinValue}
-            onMaxValueChange={handleMaxValue}
-          />
-        </Col>
-      </Row>
-    </RBContainer>
+    <Grid container justifyContent="center" p={5}>
+      <SearchBar onSearchChange={handleSearchChange} />
+      <TypeFilter handleEmployeeType={handleEmployeeType} type={type} />
+      <SalaryRangeFilter
+        onMinValueChange={handleMinValue}
+        onMaxValueChange={handleMaxValue}
+        minValue={minValue}
+        maxValue={maxValue}
+      />
+      <EmployeeList
+        type={type}
+        searchTerm={searchTerm}
+        minValue={minValue}
+        maxValue={maxValue}
+        data={data}
+      />
+    </Grid>
   );
 }
 

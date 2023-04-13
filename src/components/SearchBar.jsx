@@ -1,13 +1,15 @@
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import PropTypes from 'prop-types';
-import Form from 'react-bootstrap/Form';
 
 function SearchBar({ onSearchChange }) {
   return (
-    <Form.Control
-      type="text"
-      placeholder="Search..."
-      onChange={onSearchChange}
-    />
+    <Box
+      p={2}
+      autoComplete="off"
+    >
+      <TextField id="standard-basic" label="Search by name" variant="standard" type="text" onChange={onSearchChange} />
+    </Box>
   );
 }
 
