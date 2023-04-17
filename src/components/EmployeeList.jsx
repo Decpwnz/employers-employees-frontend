@@ -1,8 +1,20 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
+
+const StatusLight = styled('div')(({ available }) => ({
+  width: 12,
+  height: 12,
+  borderRadius: '50%',
+  backgroundColor: available ? 'green' : 'orange',
+  display: 'inline-block',
+  marginRight: '5px',
+}));
+
+const currentTime = new Date().getHours();
 
 function EmployeeList({
   data, type, searchTerm, minValue, maxValue,
@@ -73,9 +85,17 @@ function EmployeeList({
                 <Typography>
                   {`Workplace Number: ${employee.workplaceNumber}`}
                 </Typography>
-                <Typography>
-                  {`Lunch Time: ${employee.lunchTime}`}
-                </Typography>
+                {currentTime === employee.lunchTime ? (
+                  <Grid container alignItems="center">
+                    <StatusLight />
+                    <Typography>Lunch Time</Typography>
+                  </Grid>
+                ) : (
+                  <Grid container alignItems="center">
+                    <StatusLight available />
+                    <Typography>Available</Typography>
+                  </Grid>
+                )}
               </CardContent>
             )}
           </Card>

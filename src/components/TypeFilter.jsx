@@ -22,10 +22,11 @@ function TypeFilter({ handleEmployeeType, type }) {
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"
         value={type}
+        onChange={handleEmployeeType}
       >
-        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.All} control={<Radio />} label="All" />
-        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.Employee} control={<Radio />} label="Employee" />
-        <FormControlLabel onClick={handleEmployeeType} value={ButtonValues.Employer} control={<Radio />} label="Employer" />
+        <FormControlLabel value={ButtonValues.All} control={<Radio />} label="All" />
+        <FormControlLabel value={ButtonValues.Employee} control={<Radio />} label="Employee" />
+        <FormControlLabel value={ButtonValues.Employer} control={<Radio />} label="Employer" />
       </RadioGroup>
     </FormControl>
   );

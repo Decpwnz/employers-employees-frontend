@@ -5,7 +5,7 @@ const data = [
     name: 'John Krasinski',
     salary: 300,
     workplaceNumber: 1,
-    lunchTime: '12:00 - 13:00',
+    lunchTime: 12,
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const data = [
     name: 'Zygmunt Huncoot',
     salary: 600,
     workplaceNumber: 3,
-    lunchTime: '15:00 - 16:00',
+    lunchTime: 13,
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const data = [
     name: 'Frank Vearncombe',
     salary: 100,
     workplaceNumber: 3,
-    lunchTime: '16:00 - 17:00',
+    lunchTime: 14,
   },
   {
     id: 7,
