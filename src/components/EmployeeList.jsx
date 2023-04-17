@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
 const StatusLight = styled('div')(({ available }) => ({
-  width: '12px',
-  height: '12px',
+  width: 12,
+  height: 12,
   borderRadius: '50%',
   backgroundColor: available ? 'green' : 'orange',
   display: 'inline-block',
