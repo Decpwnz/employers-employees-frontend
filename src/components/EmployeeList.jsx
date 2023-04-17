@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
@@ -86,12 +86,12 @@ function EmployeeList({
                   {`Workplace Number: ${employee.workplaceNumber}`}
                 </Typography>
                 {currentTime === employee.lunchTime ? (
-                  <Grid container sx={{ alignItems: 'center' }}>
-                    <StatusLight available={false} />
+                  <Grid container alignItems="center">
+                    <StatusLight />
                     <Typography>Lunch Time</Typography>
                   </Grid>
                 ) : (
-                  <Grid container sx={{ alignItems: 'center' }}>
+                  <Grid container alignItems="center">
                     <StatusLight available />
                     <Typography>Available</Typography>
                   </Grid>
