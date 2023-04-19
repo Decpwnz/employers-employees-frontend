@@ -67,9 +67,18 @@ function EmployeeList({
                 <Typography>
                   {`Salary: ${employee.salary}`}
                 </Typography>
-                <Typography>
-                  {`Business Hours: ${employee.businessHours}`}
-                </Typography>
+                {currentTime >= employee.availableHours.start
+                && currentTime < employee.availableHours.end ? (
+                  <Grid container alignItems="center">
+                    <StatusLight available />
+                    <Typography>Available</Typography>
+                  </Grid>
+                  ) : (
+                    <Grid container alignItems="center">
+                      <StatusLight />
+                      <Typography>Unavailable</Typography>
+                    </Grid>
+                  )}
               </CardContent>
             ) : (
               <CardContent>
