@@ -12,14 +12,20 @@ const data = [
     type: 'Employer',
     name: 'Alfred McVitty',
     salary: 400,
-    businessHours: '08:00 - 17:00',
+    availableHours: {
+      start: 13,
+      end: 18,
+    },
   },
   {
     id: 3,
     type: 'Employer',
     name: 'Arnold Capin',
     salary: 500,
-    businessHours: '08:00 - 17:00',
+    availableHours: {
+      start: 9,
+      end: 15,
+    },
   },
   {
     id: 4,
@@ -34,7 +40,10 @@ const data = [
     type: 'Employer',
     name: 'Karen Dorsett',
     salary: 700,
-    businessHours: '08:00 - 17:00',
+    availableHours: {
+      start: 10,
+      end: 16,
+    },
   },
   {
     id: 6,
@@ -49,7 +58,10 @@ const data = [
     type: 'Employer',
     name: 'Beatrice Sillick',
     salary: 200,
-    businessHours: '08:00 - 17:00',
+    availableHours: {
+      start: 11,
+      end: 18,
+    },
   },
 ];
 
