@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 import PropTypes from 'prop-types';
+import winston from 'winston';
 
 const StatusLight = styled('div')(({ available }) => ({
   width: 12,
@@ -16,9 +20,29 @@ const StatusLight = styled('div')(({ available }) => ({
 
 const currentTime = new Date().getHours();
 
+const logger = winston.createLogger({
+  level: 'info',
+  transports: [
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.simple(),
+      ),
+    }),
+  ],
+});
+
 function EmployeeList({
   data, type, searchTerm, minValue, maxValue,
 }) {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/testDB')
+      .then((res) => setUsers(res.data))
+      .catch((err) => logger.error(err));
+  }, []);
+
   const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
 
   const filteredData = sortedData.filter((item) => {
