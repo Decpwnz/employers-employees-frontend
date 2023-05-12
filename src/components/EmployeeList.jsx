@@ -5,8 +5,10 @@ import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
 import PropTypes from 'prop-types';
+
+import usersController from '../controllers/usersController';
+import mapBackendToFrontend from '../utils/backendMapper';
 
 const StatusLight = styled('div')(({ available }) => ({
   width: 12,
@@ -20,31 +22,36 @@ const StatusLight = styled('div')(({ available }) => ({
 const currentTime = new Date().getHours();
 
 function EmployeeList({
-  data, type, searchTerm, minValue, maxValue,
+  type, searchTerm, minValue, maxValue,
 }) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/testDB')
-      .then((res) => setUsers(res.data));
+    const fetchUsers = async () => {
+      const response = await usersController.getUsers();
+      setUsers(response);
+    };
+    fetchUsers();
   }, []);
 
-  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  const usersData = mapBackendToFrontend(users);
+
+  const sortedData = [...usersData].sort((a, b) => a.name.localeCompare(b.name));
 
   const filteredData = sortedData.filter((item) => {
-    function handleTypeFilter(value, employee) {
+    function handleFilterByType(value, employee) {
       if (value === 'All') return true;
       return value === employee.type;
     }
 
-    function handleSearchBar(search, employee) {
+    function handleFilterBySearch(search, employee) {
       if (employee.name.toLowerCase().includes(search.toLowerCase())) {
         return true;
       }
       return false;
     }
 
-    function handleSalaryRange(min, max, employee) {
+    function handleFilterBySalaryRange(min, max, employee) {
       if (min === null && employee.salary <= max) return true;
       if (max === null && employee.salary >= min) return true;
       if (employee.salary >= min && employee.salary <= max) return true;
@@ -52,9 +59,9 @@ function EmployeeList({
     }
 
     return (
-      handleSalaryRange(minValue, maxValue, item)
-    && handleSearchBar(searchTerm, item)
-    && handleTypeFilter(type, item)
+      handleFilterBySalaryRange(minValue, maxValue, item)
+    && handleFilterBySearch(searchTerm, item)
+    && handleFilterByType(type, item)
     );
   });
 
@@ -129,21 +136,6 @@ EmployeeList.propTypes = {
   searchTerm: PropTypes.string.isRequired,
   minValue: PropTypes.number,
   maxValue: PropTypes.number,
-  data: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    salary: PropTypes.number.isRequired,
-    workplaceNumber: PropTypes.oneOfType([
-      PropTypes.any,
-    ]),
-    lunchTime: PropTypes.oneOfType([
-      PropTypes.any,
-    ]),
-    businessHours: PropTypes.oneOfType([
-      PropTypes.any,
-    ]),
-  })).isRequired,
 };
 
 EmployeeList.defaultProps = {
