@@ -8,7 +8,7 @@ const usersController = {
       return users;
     } catch (error) {
       showNotification('Failed to get users', error);
-      throw error;
+      return null;
     }
   },
 };

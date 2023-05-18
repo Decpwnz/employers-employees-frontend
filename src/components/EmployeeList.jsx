@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
 import usersController from '../controllers/usersController';
-import mapBackendToFrontend from '../utils/backendMapper';
 
 const StatusLight = styled('div')(({ available }) => ({
   width: 12,
@@ -34,9 +33,7 @@ function EmployeeList({
     fetchUsers();
   }, []);
 
-  const usersData = mapBackendToFrontend(users);
-
-  const sortedData = [...usersData].sort((a, b) => a.name.localeCompare(b.name));
+  const sortedData = [...users].sort((a, b) => a.name.localeCompare(b.name));
 
   const filteredData = sortedData.filter((item) => {
     function handleFilterByType(value, employee) {
@@ -84,8 +81,8 @@ function EmployeeList({
                 <Typography>
                   {`Salary: ${employee.salary}`}
                 </Typography>
-                {currentTime >= employee.availableHours.start
-                && currentTime < employee.availableHours.end ? (
+                {currentTime >= employee.employer.availableHours.start
+                && currentTime < employee.employer.availableHours.end ? (
                   <Grid container alignItems="center">
                     <StatusLight available />
                     <Typography>Available</Typography>
@@ -109,9 +106,9 @@ function EmployeeList({
                   {`Salary: ${employee.salary}`}
                 </Typography>
                 <Typography>
-                  {`Workplace Number: ${employee.workplaceNumber}`}
+                  {`Workplace Number: ${employee.employee.workplaceNumber}`}
                 </Typography>
-                {currentTime === employee.lunchTime ? (
+                {currentTime === employee.employee.lunchTime ? (
                   <Grid container alignItems="center">
                     <StatusLight />
                     <Typography>Lunch Time</Typography>

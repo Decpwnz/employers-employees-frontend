@@ -1,19 +1,11 @@
-import axios from 'axios';
-
-import showNotification from '../utils/notification';
-
-const api = axios.create({
-  baseURL: 'http://localhost:3001/',
-});
+import mapBackendToFrontend from '../utils/backendMapper';
+import api from './service';
 
 const getUsers = async () => {
-  try {
-    const response = await api.get('/testDB');
-    return response.data;
-  } catch (error) {
-    showNotification('Failed to get users:', error);
-    throw error;
-  }
+  const response = await api.get('/testDB');
+  const backendData = response.data;
+  const users = mapBackendToFrontend(backendData);
+  return users;
 };
 
 export default getUsers;
