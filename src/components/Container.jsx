@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import Grid from '@mui/material/Grid';
 
-import data from '../data/data';
 import EmployeeList from './EmployeeList';
 import SalaryRangeFilter from './SalaryRangeFilter';
 import SearchBar from './SearchBar';
@@ -53,7 +52,6 @@ function Container() {
         searchTerm={searchTerm}
         minValue={minValue}
         maxValue={maxValue}
-        data={data}
       />
     </Grid>
   );
